@@ -21,11 +21,11 @@ ActiveRecord::Schema.define(version: 2021_03_24_224139) do
 
   create_table "measures", force: :cascade do |t|
     t.string "type"
-    t.integer "measurements_id", null: false
+    t.integer "measurement_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["measurements_id"], name: "index_measures_on_measurements_id"
+    t.index ["measurement_id"], name: "index_measures_on_measurement_id"
   end
 
-  add_foreign_key "measures", "measurements", column: "measurements_id"
+  add_foreign_key "measures", "measurements"
 end
