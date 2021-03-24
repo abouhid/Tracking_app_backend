@@ -7,6 +7,6 @@ RSpec.describe Measure, type: :model do
   # ensure an Measure record belongs to a single todo record
   it { should belong_to(:measurement) }
   # Validation test
-  # ensure column name is present before saving
-  it { should validate_presence_of(:name) }
+  # ensure column type is present before saving
+  it { should validate_presence_of(:type) }
 end
