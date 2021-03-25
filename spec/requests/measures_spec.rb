@@ -3,14 +3,16 @@ require 'rails_helper'
 
 RSpec.describe 'measures API' do
   # Initialize the test data
-  let!(:measurement) { create(:measurement) }
+  let(:user) { create(:user) }
+  let!(:measurement) { create(:measurement, created_by: user.id) }
   let!(:measures) { create_list(:measure, 20, measurement_id: measurement.id) }
   let(:measurement_id) { measurement.id }
   let(:id) { measures.first.id }
+  let(:headers) { valid_headers }
 
   # Test suite for GET /measurements/:measurement_id/measures
   describe 'GET /measurements/:measurement_id/measures' do
-    before { get "/measurements/#{measurement_id}/measures" }
+    before { get "/measurements/#{measurement_id}/measures" , params: {}, headers: headers }
 
     context 'when measurement exists' do
       it 'returns status code 200' do
@@ -37,7 +39,7 @@ RSpec.describe 'measures API' do
 
   # Test suite for GET /measurements/:measurement_id/measures/:id
   describe 'GET /measurements/:measurement_id/measures/:id' do
-    before { get "/measurements/#{measurement_id}/measures/#{id}" }
+    before { get "/measurements/#{measurement_id}/measures/#{id}" , params: {}, headers: headers }
 
     context 'when measurement measure exists' do
       it 'returns status code 200' do
@@ -64,10 +66,10 @@ RSpec.describe 'measures API' do
 
   # Test suite for PUT /measurements/:measurement_id/measures
   describe 'POST /measurements/:measurement_id/measures' do
-    let(:valid_attributes) { { type_of_measure: 'Visit Narnia' } }
+    let(:valid_attributes) { { type_of_measure: 'Visit Narnia' }.to_json }
 
     context 'when request attributes are valid' do
-      before { post "/measurements/#{measurement_id}/measures", params: valid_attributes }
+      before { post "/measurements/#{measurement_id}/measures", params: valid_attributes , headers: headers}
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
@@ -75,7 +77,7 @@ RSpec.describe 'measures API' do
     end
 
     context 'when an invalid request' do
-      before { post "/measurements/#{measurement_id}/measures", params: {} }
+      before { post "/measurements/#{measurement_id}/measures", params: {} , headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -89,9 +91,9 @@ RSpec.describe 'measures API' do
 
   # Test suite for PUT /measurements/:measurement_id/measures/:id
   describe 'PUT /measurements/:measurement_id/measures/:id' do
-    let(:valid_attributes) { { type_of_measure: 'Mozart' } }
+    let(:valid_attributes) { { type_of_measure: 'Mozart' }.to_json }
 
-    before { put "/measurements/#{measurement_id}/measures/#{id}", params: valid_attributes }
+    before { put "/measurements/#{measurement_id}/measures/#{id}", params: valid_attributes, headers: headers }
 
     context 'when measure exists' do
       it 'returns status code 204' do
@@ -119,7 +121,7 @@ RSpec.describe 'measures API' do
 
   # Test suite for DELETE /measurements/:id
   describe 'DELETE /measurements/:id' do
-    before { delete "/measurements/#{measurement_id}/measures/#{id}" }
+    before { delete "/measurements/#{measurement_id}/measures/#{id}" , params: {}, headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)

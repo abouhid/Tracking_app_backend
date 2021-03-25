@@ -3,14 +3,13 @@ class MeasurementsController < ApplicationController
 
   # GET /measurements
   def index
-    @measurements = Measurement.all
+    @measurements = current_user.measurements
     json_response(@measurements)
   end
 
   # POST /measurements
   def create
-    @measurement = Measurement.create!(measurement_params)
-    @measurement.save
+    @measurement = current_user.measurements.create!(measurement_params)
     json_response(@measurement, :created)
   end
 
@@ -35,7 +34,7 @@ class MeasurementsController < ApplicationController
 
   def measurement_params
     # whitelist params
-    params.permit(:name, :created_by)
+    params.permit(:name)
   end
 
   def set_measurement
