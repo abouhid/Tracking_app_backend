@@ -34,7 +34,7 @@ module V1
     private
 
     def measure_params
-      params.permit(:type_of_measure)
+      params.permit(:value_of_measure)
     end
 
     def set_measurement

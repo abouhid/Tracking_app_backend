@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_021122) do
   end
 
   create_table "measures", force: :cascade do |t|
-    t.string "type_of_measure"
+    t.string "value_of_measure"
     t.integer "measurement_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

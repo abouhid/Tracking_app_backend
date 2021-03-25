@@ -7,5 +7,5 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 50.times do
   measure = Measurement.create(name: Faker::Lorem.word, created_by: User.first.id)
-  measure.measures.create(type_of_measure: Faker::Lorem.word)
+  measure.measures.create(value_of_measure: Faker::Lorem.word)
 end
