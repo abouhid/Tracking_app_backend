@@ -8,5 +8,5 @@ RSpec.describe Measure, type: :model do
   it { should belong_to(:measurement) }
   # Validation test
   # ensure column type is present before saving
-  it { should validate_presence_of(:type) }
+  it { should validate_presence_of(:type_of_measure) }
 end
