@@ -1,3 +1,5 @@
+module V1
+
 class MeasuresController < ApplicationController
   before_action :set_measurement
   before_action :set_measurement_measure, only: [:show, :update, :destroy]
@@ -43,4 +45,5 @@ class MeasuresController < ApplicationController
   def set_measurement_measure
     @measure = @measurement.measures.find_by!(id: params[:id]) if @measurement
   end
+end
 end

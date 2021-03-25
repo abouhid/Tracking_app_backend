@@ -1,10 +1,13 @@
+module V1
+
 class MeasurementsController < ApplicationController
   before_action :set_measurement, only: [:show, :update, :destroy]
 
   # GET /measurements
   def index
-    @measurements = current_user.measurements
+    @measurements = current_user.measurements.paginate(page: params[:page], per_page: 20)
     json_response(@measurements)
+ 
   end
 
   # POST /measurements
@@ -40,4 +43,5 @@ class MeasurementsController < ApplicationController
   def set_measurement
     @measurement = Measurement.find(params[:id])
   end
+end
 end
