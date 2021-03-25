@@ -8,7 +8,7 @@ RSpec.describe 'measurements API', type: :request do
   let(:measurement_id) { measurements.first.id }
   # authorize request
   let(:headers) { valid_headers }
- 
+
   # Test suite for GET /measurements
   describe 'GET /measurements' do
     # make HTTP get request before each example
@@ -16,7 +16,7 @@ RSpec.describe 'measurements API', type: :request do
 
     it 'returns measurements' do
       # Note `json` is a custom helper to parse JSON responses
-      expect(json).not_to be_empty  
+      expect(json).not_to be_empty
       expect(json.size).to eq(10)
     end
 
@@ -27,7 +27,7 @@ RSpec.describe 'measurements API', type: :request do
 
   # Test suite for GET /measurements/:id
   describe 'GET /measurements/:id' do
-    before { get "/measurements/#{measurement_id}" , params: {}, headers: headers }
+    before { get "/measurements/#{measurement_id}", params: {}, headers: headers }
 
     context 'when the record exists' do
       it 'returns the measurement' do
@@ -48,7 +48,7 @@ RSpec.describe 'measurements API', type: :request do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/\"message\":\"Couldn't find Measurement with 'id'=100\"/)
+        expect(response.body).to match(/"message":"Couldn't find Measurement with 'id'=100"/)
       end
     end
   end
@@ -56,10 +56,10 @@ RSpec.describe 'measurements API', type: :request do
   # Test suite for POST /measurements
   describe 'POST /measurements' do
     # valid payload
-    let(:valid_attributes) { { name: 'Learn Elm', created_by: user.id.to_s }.to_json}
+    let(:valid_attributes) { { name: 'Learn Elm', created_by: user.id.to_s }.to_json }
 
     context 'when the request is valid' do
-      before { post '/measurements',  params: valid_attributes, headers: headers }
+      before { post '/measurements', params: valid_attributes, headers: headers }
 
       it 'creates a measurement' do
         expect(json['name']).to eq('Learn Elm')
@@ -71,7 +71,7 @@ RSpec.describe 'measurements API', type: :request do
     end
 
     context 'when the request is invalid' do
-    let(:invalid_attributes) { { name: nil }.to_json }
+      let(:invalid_attributes) { { name: nil }.to_json }
 
       before { post '/measurements', params: invalid_attributes, headers: headers }
 

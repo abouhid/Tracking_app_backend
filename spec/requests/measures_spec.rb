@@ -12,7 +12,7 @@ RSpec.describe 'measures API' do
 
   # Test suite for GET /measurements/:measurement_id/measures
   describe 'GET /measurements/:measurement_id/measures' do
-    before { get "/measurements/#{measurement_id}/measures" , params: {}, headers: headers }
+    before { get "/measurements/#{measurement_id}/measures", params: {}, headers: headers }
 
     context 'when measurement exists' do
       it 'returns status code 200' do
@@ -32,14 +32,14 @@ RSpec.describe 'measures API' do
       end
 
       it 'returns a not found message' do
-        expect(response.body).to match(/\"message\":\"Couldn't find Measurement with 'id'=0\"/)
+        expect(response.body).to match(/"message":"Couldn't find Measurement with 'id'=0"/)
       end
     end
   end
 
   # Test suite for GET /measurements/:measurement_id/measures/:id
   describe 'GET /measurements/:measurement_id/measures/:id' do
-    before { get "/measurements/#{measurement_id}/measures/#{id}" , params: {}, headers: headers }
+    before { get "/measurements/#{measurement_id}/measures/#{id}", params: {}, headers: headers }
 
     context 'when measurement measure exists' do
       it 'returns status code 200' do
@@ -69,7 +69,7 @@ RSpec.describe 'measures API' do
     let(:valid_attributes) { { type_of_measure: 'Visit Narnia' }.to_json }
 
     context 'when request attributes are valid' do
-      before { post "/measurements/#{measurement_id}/measures", params: valid_attributes , headers: headers}
+      before { post "/measurements/#{measurement_id}/measures", params: valid_attributes, headers: headers }
 
       it 'returns status code 201' do
         expect(response).to have_http_status(201)
@@ -77,7 +77,7 @@ RSpec.describe 'measures API' do
     end
 
     context 'when an invalid request' do
-      before { post "/measurements/#{measurement_id}/measures", params: {} , headers: headers }
+      before { post "/measurements/#{measurement_id}/measures", params: {}, headers: headers }
 
       it 'returns status code 422' do
         expect(response).to have_http_status(422)
@@ -121,7 +121,7 @@ RSpec.describe 'measures API' do
 
   # Test suite for DELETE /measurements/:id
   describe 'DELETE /measurements/:id' do
-    before { delete "/measurements/#{measurement_id}/measures/#{id}" , params: {}, headers: headers }
+    before { delete "/measurements/#{measurement_id}/measures/#{id}", params: {}, headers: headers }
 
     it 'returns status code 204' do
       expect(response).to have_http_status(204)
