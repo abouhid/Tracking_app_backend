@@ -66,7 +66,7 @@ RSpec.describe 'measures API' do
 
   # Test suite for PUT /measurements/:measurement_id/measures
   describe 'POST /measurements/:measurement_id/measures' do
-    let(:valid_attributes) { { type_of_measure: 'Visit Narnia' }.to_json }
+    let(:valid_attributes) { { value_of_measure: 'Visit Narnia' }.to_json }
 
     context 'when request attributes are valid' do
       before { post "/measurements/#{measurement_id}/measures", params: valid_attributes, headers: headers }
@@ -84,14 +84,14 @@ RSpec.describe 'measures API' do
       end
 
       it 'returns a failure message' do
-        expect(response.body).to match(/Validation failed: Type of measure can't be blank/)
+        expect(response.body).to match(/Validation failed: Value of measure can't be blank/)
       end
     end
   end
 
   # Test suite for PUT /measurements/:measurement_id/measures/:id
   describe 'PUT /measurements/:measurement_id/measures/:id' do
-    let(:valid_attributes) { { type_of_measure: 'Mozart' }.to_json }
+    let(:valid_attributes) { { value_of_measure: 'Mozart' }.to_json }
 
     before { put "/measurements/#{measurement_id}/measures/#{id}", params: valid_attributes, headers: headers }
 
@@ -102,7 +102,7 @@ RSpec.describe 'measures API' do
 
       it 'updates the measure' do
         updated_measure = Measure.find(id)
-        expect(updated_measure.type_of_measure).to match(/Mozart/)
+        expect(updated_measure.value_of_measure).to match(/Mozart/)
       end
     end
 

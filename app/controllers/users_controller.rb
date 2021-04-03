@@ -8,6 +8,13 @@ class UsersController < ApplicationController
     user = User.create!(user_params)
     auth_token = AuthenticateUser.new(user.email, user.password).call
     response = { message: Message.account_created, auth_token: auth_token }
+    Measurement.create(name: 'Left Bicep', created_by: user.id)
+    Measurement.create(name: 'Right Bicep', created_by: user.id)
+    Measurement.create(name: 'Left Thigh', created_by: user.id)
+    Measurement.create(name: 'Right Thigh', created_by: user.id)
+    Measurement.create(name: 'Waist', created_by: user.id)
+    Measurement.create(name: 'Hips', created_by: user.id)
+
     json_response(response, :created)
   end
 
