@@ -116,7 +116,6 @@ RSpec.describe 'measures API' do
       it 'returns a not found message' do
         expect(response.body).to match("{\"message\":\"Couldn't find Measure with [WHERE \\\"measures\\\".\\\"measurement_id\\\" = $1 AND \\\"measures\\\".\\\"id\\\" = $2]\"}")
       end
-      
     end
   end
 
