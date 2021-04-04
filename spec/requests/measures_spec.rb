@@ -1,5 +1,5 @@
 # spec/requests/measures_spec.rb
-require 'rails_helper'
+# require 'rails_helper'
 
 RSpec.describe 'measures API' do
   # Initialize the test data

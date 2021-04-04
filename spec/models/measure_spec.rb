@@ -1,5 +1,5 @@
 # spec/models/Measure_spec.rb
-require 'rails_helper'
+# require 'rails_helper'
 
 # Test suite for the Measure model
 RSpec.describe Measure, type: :model do
