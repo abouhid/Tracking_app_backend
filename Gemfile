@@ -20,8 +20,8 @@ gem 'active_model_serializers', '~> 0.10.0'
 gem 'faker'
 gem 'rubocop', '~>0.81.0'
 # gem 'webpacker', '~> 4.0'
-gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
+gem 'turbolinks', '~> 5'
 gem 'webpacker', git: 'https://github.com/rails/webpacker.git'
 
 gem 'jwt'
@@ -41,8 +41,7 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_bot_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
-    gem 'webdrivers'
-
+  gem 'webdrivers'
 end
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
