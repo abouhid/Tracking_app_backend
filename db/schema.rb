@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_03_25_021122) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "measurements", force: :cascade do |t|
     t.string "name"
     t.string "created_by"
@@ -21,7 +24,7 @@ ActiveRecord::Schema.define(version: 2021_03_25_021122) do
 
   create_table "measures", force: :cascade do |t|
     t.string "value_of_measure"
-    t.integer "measurement_id", null: false
+    t.bigint "measurement_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["measurement_id"], name: "index_measures_on_measurement_id"
