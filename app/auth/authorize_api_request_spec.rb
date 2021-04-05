@@ -1,4 +1,4 @@
-require 'spec_helper'
+require 'rails_helper'
 RSpec.describe AuthorizeApiRequest do
   # Create test user
   let(:user) { create(:user) }
