@@ -6,7 +6,7 @@
 This is the Final Capstone Project for the Microverse Program, with the following requirements:
 
 - The project is a mobile web app
-- The database 2 tables (Measures and Measurements)
+- The database has 2 tables (Measures and Measurements)
 - It uses Postgres as a database
 - Ruby on Rails was used for the back-end and to create a REST API
 - React was used for the front-end and uses redux to store the info across the app
@@ -25,7 +25,7 @@ This is the Final Capstone Project for the Microverse Program, with the followin
 
 This app is the back-end of the following project: [Track.it - Front-End](https://github.com/abouhid/Tracking_app_frontend)
 
-The tables created are related according to the following diagram:
+The following diagram represents the relationship of the tables:
 
 ![screenshot](./schema.png)
 
