@@ -1,6 +1,8 @@
 class ApiVersion
   attr_reader :version, :default
 
+# rubocop:disable all
+
   def initialize(version, default = false)
     @version = version
     @default = default
@@ -19,3 +21,4 @@ class ApiVersion
     accept&.include?("application/vnd.todos.#{version}+json")
   end
 end
+# rubocop:enable all
