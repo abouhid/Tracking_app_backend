@@ -10,8 +10,8 @@ Rails.application.routes.draw do
     resources :measurements, only: :index
   end
   
-resources :authentication, only: [:create]
-resources :users, only: [:create]
+  post 'auth/login', to: 'authentication#authenticate'
+  post 'signup', to: 'users#create'
 
 
 end
