@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=abouhid/https://github.com/abouhid/Tracking_app_frontend)
 
